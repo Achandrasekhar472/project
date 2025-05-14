@@ -1,0 +1,729 @@
+
+<!DOCTYPE html>
+ <html lang="en"> 
+    <head><script type="text/javascript" src="/___vscode_livepreview_injected_script"></script> 
+        <meta charset="UTF-8" />
+         <title>Fama Barber Shop and Beauty Salon</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Open+Sans&display=swap" rel="stylesheet"> <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: url('https://images.unsplash.com/photo-1732314287829-f1da598a5b77?w=1920&auto=format&fit=crop&q=80') center/cover no-repeat fixed;
+  color: #fff;
+}
+
+nav {
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+}
+
+nav a {
+  padding: 20px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #1e6fe9;
+}
+
+header {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  color: #fff;
+  padding: 0 20px;
+}
+
+header .overlay {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
+  max-width: 800px;
+}
+
+header h1 {
+  font-size: 3.2rem;
+  color: #fff;
+  text-shadow: 3px 3px 6px #000;
+  margin-bottom: 10px;
+}
+
+header .tagline {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #f8b400;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+header .description {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color:rgb(176, 138, 138);
+}
+
+header .highlight {
+  font-weight: bold;
+  color: #e91e63;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+section {
+  padding: 80px 20px;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+
+h2 {
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+}
+
+.service-grid, .gallery-grid, .team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.service-item, .gallery-item, .team-member {
+  background: #222;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.service-item:hover, .gallery-item:hover, .team-member:hover {
+  transform: scale(1.05);
+}
+
+.service-item img, .gallery-item img, .team-member img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.team-member img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.team-member h3 {
+  margin-bottom: 5px;
+  color: #ff4081;
+}
+
+.team-member p {
+  color: #ccc;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.booking form, .contact-info {
+  max-width: 600px;
+  margin: auto;
+ 
+  padding: 30px;
+  border-radius: 10px;
+}
+
+form input, form textarea, form button {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+
+form button {
+  
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.contact-info p {
+  margin: 10px 0;
+  font-size: 1.1rem;
+}
+
+.contact-info a {
+  color: #e91e63;
+  text-decoration: none;
+}
+
+iframe {
+  width: 100%;
+  height: 300px;
+  border: none;
+  margin-top: 20px;
+  border-radius: 20px;
+}
+
+footer {
+  background: #000;
+  color: #aaa;
+  text-align: center;
+  padding: 20px;
+}
+       .service-item {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.service-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(255, 0, 100, 0.5);
+}
+
+.service-item h3 {
+  color: #ff4081;
+  text-shadow: 1px 1px 2px #000;
+}
+
+.service-item p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #eee;
+}
+
+/* Base style for all service items */
+.service-item {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  animation: fadeInUp 0.8s ease forwards;
+  opacity: 0;
+}
+
+/* Animation keyframes */
+@keyframes fadeInUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+/* Style variations for each service */
+.service-item:nth-child(1) {
+  border-left: 4px solid #ff4081;
+  animation-delay: 0.1s;
+}
+.service-item:nth-child(2) {
+  border-left: 4px solid #00e5ff;
+  animation-delay: 0.3s;
+}
+.service-item:nth-child(3) {
+  border-left: 4px solid #76ff03;
+  animation-delay: 0.5s;
+}
+.service-item:nth-child(4) {
+  border-left: 4px solid #ffab00;
+  animation-delay: 0.7s;
+}
+
+.service-item:hover {
+  transform: scale(1.06);
+  box-shadow: 0 8px 25px rgba(255, 64, 129, 0.6);
+}
+
+.service-item h3 {
+  color: #fff;
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
+
+#reviews {
+  padding: 80px 20px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  text-align: center;
+}
+
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.review-item {
+  background: #222;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInUp 0.8s ease forwards;
+  opacity: 0;
+}
+
+.review-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(255, 64, 129, 0.6);
+}
+
+.review-item img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+  border: 2px solid #e91e63;
+}
+
+.review-item h3 {
+  color: #ff4081;
+  margin-bottom: 10px;
+}
+
+.review-item p {
+  font-size: 0.95rem;
+  color: #ddd;
+  line-height: 1.6;
+}
+
+.review-item::after {
+  content: "\2605\2605\2605\2605\2606 ";
+  display: block;
+  margin-top: 10px;
+  color: gold;
+  font-size: 0.9rem;
+  text-shadow: 1px 1px 2px #000;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+       .booking {
+ 
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+  transition: all 0.4s ease;
+}
+
+.booking:hover {
+  box-shadow: 0 12px 30px rgba(233, 209, 30, 0.4);
+  transform: translateY(-3px);
+}
+
+.booking form input,
+.booking form textarea {
+  background: #2e2e2e;
+  border: 1px solid #444;
+  padding: 12px 15px;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1rem;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.booking form input:focus,
+.booking form textarea:focus {
+  border-color: #e91e63;
+  box-shadow: 0 0 10px rgba(233, 30, 99, 0.3);
+  outline: none;
+}
+
+.booking form button {
+  background: #e91e63;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  padding: 12px;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.booking form button:hover {
+  background: #ff4081;
+  transform: scale(1.05);
+}
+#faqs {
+  padding: 80px 20px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  text-align: center;
+}
+
+.faq-container {
+  max-width: 800px;
+  margin: auto;
+  text-align: left;
+}
+
+.faq-item {
+  background: #222;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  transition: transform 0.3s ease;
+  animation: fadeInUp 0.8s ease forwards;
+  opacity: 0;
+}
+
+.faq-item h3 {
+  color: #ff4081;
+  margin-bottom: 10px;
+}
+
+.faq-item p {
+  font-size: 1rem;
+  color: #ddd;
+  line-height: 1.6;
+}
+
+.faq-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(255, 64, 129, 0.6);
+}
+.pricing-section {
+        background: rgba(0, 0, 0, 0.7);
+        padding: 80px 20px;
+        color: #fff;
+        text-align: center;
+      }
+
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 30px;
+        max-width: 1000px;
+        margin: auto;
+      }
+
+      .pricing-plan {
+        background: #222;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+        transition: transform 0.3s;
+      }
+
+      .pricing-plan:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(255, 64, 129, 0.5);
+      }
+
+      .pricing-plan h3 {
+        color: #e91e63;
+        margin-bottom: 10px;
+        font-size: 1.6rem;
+      }
+
+      .pricing-plan .price {
+        font-size: 2rem;
+        margin: 20px 0;
+        color: #f8b400;
+      }
+
+      .pricing-plan ul {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: #ccc;
+      }
+
+      .pricing-plan ul li {
+        margin-bottom: 10px;
+      }
+
+      .pricing-plan button {
+        background: #e91e63;
+        border: none;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .pricing-plan button:hover {
+        background: #ff4081;
+      }
+       body.light-theme {
+  background: #f5f5f5;
+  color: #222;
+}
+
+body.light-theme nav {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+body.light-theme nav a {
+  color: #222;
+}
+
+body.light-theme nav a:hover {
+  color: #115bda;
+}
+
+body.light-theme header .overlay {
+  background: rgba(255, 255, 255, 0.8);
+  color: #000;
+}
+
+body.light-theme section,
+body.light-theme #reviews,
+body.light-theme #faqs,
+body.light-theme .pricing-section {
+  background: #fff;
+  color: #000;
+}
+
+body.light-theme .service-item,
+body.light-theme .faq-item,
+body.light-theme .review-item,
+body.light-theme .pricing-plan {
+  background: #eee;
+  color: #000;
+}
+
+body.light-theme .team-member h3,
+body.light-theme .pricing-plan h3 {
+  color: #e91e63;
+}
+
+body.light-theme .highlight {
+  color: #e91e63;
+}
+
+
+</style>
+ </head>
+  <body>
+     <nav>
+       <a href="#home">Home</a>
+        <a href="#services">Services</a> 
+        <a href="#gallery">Gallery</a>
+       <a href="#booking">Booking</a>
+         <a href="#contact">Contact</a>
+     <a href="javascript:void(0);" id="theme-toggle" title="Toggle Theme">
+  🌓
+</a>
+
+     </nav>
+     <section id="home">
+         <header>
+  <div class="overlay">
+    <h1>Fama Barber Shop and Beauty Salon</h1>
+    <p class="tagline">Style meets elegance. Confidence begins here.</p>
+    <p class="description">
+      Welcome to <span class="highlight">Fama Barber Shop</span>, where tradition meets trend. 
+      Our skilled barbers and beauticians offer premium grooming services in a relaxing, 
+      professional atmosphere. Whether it’s a classic haircut, a fresh beard trim, 
+      or a rejuvenating facial, we’ve got you covered.
+    </p>
+  </div>
+</header>
+</section>
+
+<section id="services">
+<h2>Our Services</h2>
+<div class="service-grid">
+  <div class="service-item">
+    
+    <h3>💈 Haircut</h3>
+    <p style="color: coral;">Experience the precision of our professional stylists who understand your unique style. Whether it's a classic cut or a modern fade, we deliver clean, tailored results that turn heads.</p>
+  </div>
+  <div class="service-item">
+    
+    <h3>🧔 Beard Trim</h3>
+    <p style="color: coral;">Shape, define, and sharpen your beard with our expert grooming. We blend style with care using top-tier tools to give you a crisp, clean finish.</p>
+  </div>
+  <div class="service-item">
+   
+    <h3>💆 Facial</h3>
+    <p style="color: coral;">Revitalize your skin with our rejuvenating facial services. Designed to cleanse, exfoliate, and hydrate, our treatments leave your face glowing and refreshed.</p>
+  </div>
+  <div class="service-item">
+    
+    <h3>🚿 Hair Wash</h3>
+    <p style="color: coral;">Enjoy a relaxing wash that cleanses your scalp and restores your hair's natural shine. We use premium shampoos and conditioners suited for all hair types.</p>
+  </div>
+</div>
+</section>
+<section class="pricing-section" id="pricing">
+      <h2>Our Membership Plans</h2>
+      <div class="pricing-grid">
+        <div class="pricing-plan">
+          <h3>Free</h3>
+          <p class="price">$0/month</p>
+          <ul style="color:grey ;">
+            <li>Walk-in access</li>
+            <li>Basic service appointments</li>
+            <li>Limited availability</li>
+          </ul>
+          <button>Get Started</button>
+        </div>
+        <div class="pricing-plan">
+          <h3>Membership</h3>
+          <p class="price">$25/month</p>
+          <ul style="color:grey ;">
+            <li>Priority bookings</li>
+            <li>10% off all services</li>
+            <li>Exclusive member-only offers</li>
+          </ul>
+          <button>Join Now</button>
+        </div>
+        <div class="pricing-plan">
+          <h3>Pro Membership</h3>
+          <p class="price">$49/month</p>
+          <ul style="color:grey ;">
+            <li>All membership benefits</li>
+            <li>Free monthly haircut</li>
+            <li>20% off premium services</li>
+            <li>VIP lounge access</li>
+          </ul>
+          <button>Upgrade</button>
+        </div>
+      </div>
+    </section>
+
+<section id="reviews">
+    <h2>What Our Clients Say</h2>
+    <div class="review-grid">
+      <div class="review-item">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client 1">
+        <h3>James D.</h3>
+        <h5>"Absolutely the best haircut experience I’ve had. Clean, professional, and stylish!"</h5>
+      </div>
+      <div class="review-item">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client 2">
+        <h3>Ana S.</h3>
+        <h5>"Loved the facial service! My skin feels refreshed and the staff was super friendly."</h5>
+      </div>
+      <div class="review-item">
+        <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="Client 3">
+        <h3>Chris L.</h3>
+        <h5>"Great ambiance and skilled barbers. Highly recommended for a stylish trim!"</h5>
+      </div>
+    </div>
+  </section>
+
+                </section>
+                 <section id="gallery">
+                     <h2>Gallery</h2>
+                      <div class="gallery-grid">
+                         <div class="gallery-item">
+                            <img src="https://plus.unsplash.com/premium_photo-1661542350224-8e3f095ce053?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fEZhbWElMjBCYXJiZXIlMjBTaG9wJTIwYW5kJTIwQmVhdXR5JTIwU2Fsb258ZW58MHx8MHx8fDA%3D" alt="Gallery 1">
+                        </div> <div class="gallery-item"><img src="https://images.unsplash.com/photo-1542848285-4777eb2a621e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGZhY2lhbHxlbnwwfHwwfHx8MA%3D%3D" alt="Gallery 2"></div>
+                         <div class="gallery-item"><img src="https://images.unsplash.com/photo-1695173122226-3a932002ab33?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8RmFtYSUyMEJhcmJlciUyMFNob3AlMjBhbmQlMjBCZWF1dHklMjBTYWxvbnxlbnwwfHwwfHx8MA%3D%3D" alt="Gallery 3"></div>
+                          <div class="gallery-item"><img src="https://media.istockphoto.com/id/872361244/photo/man-getting-his-beard-trimmed-with-electric-razor.webp?a=1&b=1&s=612x612&w=0&k=20&c=ZFGPZr_9hJwGPMe-J24YJpf69aCnrzV98FLyhejtgj8=" alt="Gallery 4"></div> </div> </section> 
+                         <section id="team">
+  <h2>Meet Our Team</h2>
+  <div class="team-grid">
+    <div class="team-member">
+      <img src="https://randomuser.me/api/portraits/men/41.jpg" alt="Barber 1">
+      <h3>Mike F.</h3>
+      <p>Lead Barber with 10+ years of experience in traditional and modern cuts.</p>
+    </div>
+    <div class="team-member">
+      <img src="https://randomuser.me/api/portraits/women/47.jpg" alt="Beautician 1">
+      <h3>Lisa G.</h3>
+      <p>Skincare expert known for rejuvenating facials and beauty treatments.</p>
+    </div>
+    <div class="team-member">
+      <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="Barber 2">
+      <h3>David K.</h3>
+      <p>Fade specialist who brings a creative touch to every hairstyle.</p>
+    </div>
+  </div>
+</section>
+
+    <section id="booking"> <h2>Book an Appointment</h2> <div class="booking">
+                             <form onsubmit="handleBooking(event)"> <input type="text" id="name" placeholder="Your Name" required /> 
+                                <input type="tel" id="phone" placeholder="Phone Number" required /> 
+                                <input type="date" id="date" required /> 
+                                <textarea id="message" placeholder="Any special request?"></textarea>
+                                 <button type="submit" >Book Now</button> </form> </div> </section>
+                                 <section id="faqs">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-container">
+    <div class="faq-item">
+      <h3>What are your working hours?</h3>
+      <h4>We’re open Monday to Saturday from 9:00 AM to 8:00 PM. Sundays we're closed.</h4>
+    </div>
+    <div class="faq-item">
+      <h3>Do I need an appointment or can I walk in?</h3>
+      <h4>We accept both walk-ins and appointments. For quicker service, we recommend booking in advance.</h4>
+    </div>
+    <div class="faq-item">
+      <h3>Are your products suitable for sensitive skin?</h3>
+      <h4>Absolutely! We use high-quality, hypoallergenic products suited for all skin types.</h4>
+    </div>
+    <div class="faq-item">
+      <h3>Do you offer grooming services for kids?</h3>
+      <h4>Yes, we offer stylish and gentle haircuts for kids of all ages.</h4>
+    </div>
+  </div>
+</section>
+
+    
+    <section id="contact"> <h2>Contact Us</h2> <div class="contact-info"> 
+                                    <p><strong>📍 Address:</strong> 500 N Bell Ave #109, Denton, TX 76209</p>
+                                     <p><strong>📞 Phone:</strong> <a href="tel:+19406129127">+1 940-612-9127</a></p>
+                                      <p><strong>⏰ Hours:</strong> Open ⋅ Closes 7 PM</p>
+                                       <p><strong>💬 Service Comment:</strong> “Costly compared to other barbershops with better haircuts.”</p> 
+                                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3356.8991298744543!2d-97.13839888487072!3d33.22909888083869!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864dd9481cbbe8a9%3A0x7ab377deebc0dba0!2s500%20N%20Bell%20Ave%20%23109%2C%20Denton%2C%20TX%2076209%2C%20USA!5e0!3m2!1sen!2sin!4v1683213253180!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe> 
+                                    </div> </section> <footer> &copy; 2025 Fama Barber Shop and Beauty Salon. All rights reserved. </footer> 
+                                    <script>
+                                     function handleBooking(event)
+                                      { event.preventDefault();
+                                       const name = document.getElementById('name').value; 
+                                       const phone = document.getElementById('phone').value;
+                                        const date = document.getElementById('date').value; 
+                                        const message = document.getElementById('message').value; 
+                                        console.log("📅 Booking Request Submitted:");
+                                         console.log("👤 Name:", name); 
+                                         console.log("📞 Phone:", phone);
+                                          console.log("📆 Date:", date); 
+                                          console.log("📝 Message:", message || "No special request"); 
+                                          alert("Booking submitted! Check the console for details."); } </script> 
+                                        <script>
+  document.getElementById('theme-toggle').addEventListener('click', function () {
+    document.body.classList.toggle('light-theme');
+  });
+</script>
+  
+  
+  </body> </html>
