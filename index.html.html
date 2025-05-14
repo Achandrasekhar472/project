@@ -1,7 +1,6 @@
-
 <!DOCTYPE html>
  <html lang="en"> 
-    <head><script type="text/javascript" src="/___vscode_livepreview_injected_script"></script> 
+    <head> 
         <meta charset="UTF-8" />
          <title>Fama Barber Shop and Beauty Salon</title>
      <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
@@ -13,27 +12,88 @@ body {
   background: url('https://images.unsplash.com/photo-1732314287829-f1da598a5b77?w=1920&auto=format&fit=crop&q=80') center/cover no-repeat fixed;
   color: #fff;
 }
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-nav {
-  background: rgba(0, 0, 0, 0.85);
-  display: flex;
-  justify-content: center;
+body {
+  font-family: sans-serif;
+}
+
+/* Navbar Styling */
+.navbar {
+  background-color: rgb(13, 13, 13);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   position: fixed;
   width: 100%;
-  z-index: 1000;
+  top: 0;
+  z-index: 999;
 }
 
-nav a {
-  padding: 20px;
-  color: #fff;
-  text-decoration: none;
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 1.5rem;
   font-weight: bold;
-  transition: color 0.3s;
 }
 
-nav a:hover {
-  color: #1e6fe9;
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
 }
+
+.nav-links li a {
+  text-decoration: none;
+  color: #2740fa;
+  font-weight: 500;
+}
+
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+/* Responsive Nav */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color:silver;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    margin: 10px 0;
+  }
+}
+
 
 header {
   height: 100vh;
@@ -211,15 +271,6 @@ footer {
 }
 
 /* Base style for all service items */
-.service-item {
-  background: rgba(0, 0, 0, 0.6);
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  animation: fadeInUp 0.8s ease forwards;
-  opacity: 0;
-}
 
 /* Animation keyframes */
 @keyframes fadeInUp {
@@ -321,17 +372,7 @@ footer {
   text-shadow: 1px 1px 2px #000;
 }
 
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-       .booking {
+ .booking {
  
   padding: 40px;
   border-radius: 15px;
@@ -526,22 +567,48 @@ body.light-theme .pricing-plan h3 {
 body.light-theme .highlight {
   color: #e91e63;
 }
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 2rem;
+  }
+  header .tagline {
+    font-size: 1.2rem;
+  }
+  header .description {
+    font-size: 1rem;
+  }
+
+  header .overlay {
+    padding: 20px;
+    max-width: 100%;
+  }
+}
+
+body, header {
+  overflow-x: hidden;
+}
+
 
 
 </style>
  </head>
   <body>
-     <nav>
-       <a href="#home">Home</a>
-        <a href="#services">Services</a> 
-        <a href="#gallery">Gallery</a>
-       <a href="#booking">Booking</a>
-         <a href="#contact">Contact</a>
-     <a href="javascript:void(0);" id="theme-toggle" title="Toggle Theme">
-  🌓
-</a>
+    <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">Fama Barber</div><button id="themeToggle" style="margin-left: auto; padding: 8px 12px; background: #1ed1e9; color: white; border: none; border-radius: 5px; cursor: pointer;">
+  Toggle Theme
+</button>
 
-     </nav>
+      <div class="hamburger" id="hamburger">☰</div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home" onclick="closeMenu()">Home</a></li>
+        <li><a href="#services" onclick="closeMenu()">Services</a></li>
+        <li><a href="#gallery" onclick="closeMenu()">Gallery</a></li>
+        <li><a href="#booking" onclick="closeMenu()">Booking</a></li>
+        <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
      <section id="home">
          <header>
   <div class="overlay">
@@ -724,6 +791,25 @@ body.light-theme .highlight {
     document.body.classList.toggle('light-theme');
   });
 </script>
+ <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    function closeMenu() {
+      navLinks.classList.remove('active');
+    }
+  </script>
+  <script>
+  const toggleButton = document.getElementById('themeToggle');
+  toggleButton.addEventListener('click', () => {
+    document.body.classList.toggle('light-theme');
+  });
+</script>
+
   
   
   </body> </html>
